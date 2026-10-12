@@ -1,0 +1,141 @@
+/* Fondo fotográfico y capa oscura para mantener el texto legible */
+.hero-section {
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 3rem 0;
+    background-color: #111;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.68)),
+        url("bg-deber2.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.hero-section > .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Color unificado y microanimación para los botones principales */
+.btn-accent {
+    color: #171717;
+    background-color: #ffc107;
+    border-color: #ffc107;
+    transition: transform 0.25s ease, box-shadow 0.25s ease,
+        background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.btn-accent:hover {
+    color: #171717;
+    background-color: #e5ac00;
+    border-color: #e5ac00;
+    transform: translateY(-3px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.btn-accent:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.btn-accent:focus-visible {
+    box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.4);
+}
+
+.contact-link {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.contact-link:hover,
+.contact-link:focus-visible {
+    color: #ffc107 !important;
+    transform: translateY(-3px);
+}
+
+.contact-link:focus-visible {
+    outline: 2px solid #ffc107;
+    outline-offset: 5px;
+    border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn-accent,
+    .contact-link {
+        transition: none;
+    }
+
+    .btn-accent:hover,
+    .btn-accent:active {
+        transform: none;
+    }
+
+    .contact-link:hover,
+    .contact-link:focus-visible {
+        transform: none;
+    }
+}
+
+/* Estilos para la imagen de perfil en el Hero */
+.profile-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+@media (max-width: 575.98px) {
+    .hero-section {
+        background-position: 58% center;
+    }
+
+    .profile-img {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+/* Efecto hover interactivo para las tarjetas de proyectos */
+.project-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 1rem 2rem rgba(0,0,0,.15)!important;
+}
+
+/* Ajuste de scroll suave nativo de HTML */
+html {
+    scroll-behavior: smooth;
+}
+
+/* =========================================
+   ANIMACIONES AL HACER SCROLL
+   ========================================= */
+
+/* Estado inicial: Elementos ocultos y desplazados un poco hacia abajo */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Estado final (agregado por JS): Elementos visibles y en posición original */
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Retrasos escalonados para que los proyectos aparezcan uno tras otro (Cascada) */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+
+/* Transición para que las barras de progreso se animen al aparecer */
+.progress-bar {
+    width: 0; /* Empiezan vacías, el JS las llenará */
+    transition: width 1.5s ease-in-out;
+}
